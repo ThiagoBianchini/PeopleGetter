@@ -4,39 +4,37 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div style="display:flex">
+    <h1>Detalhes</h1>
+    <img src="~/lupa.png" height="50px" style="margin-left: 15px"></img>
+</div>
 
 <div>
     <h4>Pessoas</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.nome)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nome)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.descricao)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cpf)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.descricao)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cpf)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.altura)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tamanho)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.altura)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.valor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.valor)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tamanho)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.id" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Editar</a> |
+        <a asp-action="Index">Voltar para a lista</a>
+        <img src="~/voltar.png" height="15px"></img>
 </div>

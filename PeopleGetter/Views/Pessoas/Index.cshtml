@@ -4,25 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div style="display:flex">
+<h1>Pessoas</h1>
+    <img src="~/pessoa.png" height="50px" style="margin-left: 15px"></img>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Cadastrar</a>
 </p>
 <table class="table">
-    <thead>
+    <thead style="background-color:black; color:white; border:1px solid black; border-radius: 10% 10% 0 0;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descricao)
+                @Html.DisplayNameFor(model => model.cpf)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.altura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.valor)
+                @Html.DisplayNameFor(model => model.tamanho)
             </th>
             <th></th>
         </tr>
@@ -34,20 +34,22 @@
                 @Html.DisplayFor(modelItem => item.nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.descricao)
+                @Html.DisplayFor(modelItem => item.cpf)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.altura)
+                @Html.DisplayFor(modelItem => item.tamanho)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.valor)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.id" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.id" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Detalhar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id" style="text-decoration:none; color:white; background-color:red; border-radius:10%; padding: 8px">Excluir</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section footer{
+    <span>Footer das Pessoas</span>
+
+}

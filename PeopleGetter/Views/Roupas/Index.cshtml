@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PeopleGetter.Models.Roupas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="display:flex">
+    <h1>Roupas</h1>
+    <img src="~/camiseta.png" height="50px" style="margin-left: 15px"></img>
+</div>
+
+<p>
+    <a asp-action="Create" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Cadastrar</a>
+</p>
+<table class="table">
+    <thead style="background-color:black; color:white; border-radius: 10%">
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tamanho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tamanho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:cornflowerblue; border-radius:10%; padding: 8px">Detalhar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="text-decoration:none; color:white; background-color:red; border-radius:10%; padding: 8px">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section footer{
+    <span>Footer das Roupas</span>
+
+}

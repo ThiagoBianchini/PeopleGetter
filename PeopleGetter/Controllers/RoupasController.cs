@@ -10,87 +10,87 @@ using PeopleGetter.Models;
 
 namespace PeopleGetter.Controllers
 {
-    public class PessoasController : Controller
+    public class RoupasController : Controller
     {
         private readonly PeopleGetterContext _context;
 
-        public PessoasController(PeopleGetterContext context)
+        public RoupasController(PeopleGetterContext context)
         {
             _context = context;
         }
 
-        // GET: Pessoas
+        // GET: Roupas
         public async Task<IActionResult> Index()
         {
-              return _context.Pessoas != null ? 
-                          View(await _context.Pessoas.ToListAsync()) :
-                          Problem("Entity set 'PeopleGetterContext.Pessoas'  is null.");
+              return _context.Roupas != null ? 
+                          View(await _context.Roupas.ToListAsync()) :
+                          Problem("Entity set 'PeopleGetterContext.Roupas'  is null.");
         }
 
-        // GET: Pessoas/Details/5
+        // GET: Roupas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Pessoas == null)
+            if (id == null || _context.Roupas == null)
             {
                 return NotFound();
             }
 
-            var pessoas = await _context.Pessoas
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (pessoas == null)
+            var roupas = await _context.Roupas
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (roupas == null)
             {
                 return NotFound();
             }
 
-            return View(pessoas);
+            return View(roupas);
         }
 
-        // GET: Pessoas/Create
+        // GET: Roupas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Pessoas/Create
+        // POST: Roupas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,cpf,tamanho,dataCriacao")] Pessoas pessoas)
+        public async Task<IActionResult> Create([Bind("Id,nome,descricao,tamanho,valor,dataCriacao")] Roupas roupas)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pessoas);
+                _context.Add(roupas);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pessoas);
+            return View(roupas);
         }
 
-        // GET: Pessoas/Edit/5
+        // GET: Roupas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Pessoas == null)
+            if (id == null || _context.Roupas == null)
             {
                 return NotFound();
             }
 
-            var pessoas = await _context.Pessoas.FindAsync(id);
-            if (pessoas == null)
+            var roupas = await _context.Roupas.FindAsync(id);
+            if (roupas == null)
             {
                 return NotFound();
             }
-            return View(pessoas);
+            return View(roupas);
         }
 
-        // POST: Pessoas/Edit/5
+        // POST: Roupas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,cpf,tamanho,dataCriacao")] Pessoas pessoas)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,nome,descricao,tamanho,valor,dataCriacao")] Roupas roupas)
         {
-            if (id != pessoas.id)
+            if (id != roupas.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace PeopleGetter.Controllers
             {
                 try
                 {
-                    _context.Update(pessoas);
+                    _context.Update(roupas);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PessoasExists(pessoas.id))
+                    if (!RoupasExists(roupas.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace PeopleGetter.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pessoas);
+            return View(roupas);
         }
 
-        // GET: Pessoas/Delete/5
+        // GET: Roupas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Pessoas == null)
+            if (id == null || _context.Roupas == null)
             {
                 return NotFound();
             }
 
-            var pessoas = await _context.Pessoas
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (pessoas == null)
+            var roupas = await _context.Roupas
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (roupas == null)
             {
                 return NotFound();
             }
 
-            return View(pessoas);
+            return View(roupas);
         }
 
-        // POST: Pessoas/Delete/5
+        // POST: Roupas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Pessoas == null)
+            if (_context.Roupas == null)
             {
-                return Problem("Entity set 'PeopleGetterContext.Pessoas'  is null.");
+                return Problem("Entity set 'PeopleGetterContext.Roupas'  is null.");
             }
-            var pessoas = await _context.Pessoas.FindAsync(id);
-            if (pessoas != null)
+            var roupas = await _context.Roupas.FindAsync(id);
+            if (roupas != null)
             {
-                _context.Pessoas.Remove(pessoas);
+                _context.Roupas.Remove(roupas);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PessoasExists(int id)
+        private bool RoupasExists(int id)
         {
-          return (_context.Pessoas?.Any(e => e.id == id)).GetValueOrDefault();
+          return (_context.Roupas?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

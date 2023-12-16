@@ -15,5 +15,7 @@ namespace PeopleGetter.Data
         }
 
         public DbSet<PeopleGetter.Models.Pessoas> Pessoas { get; set; } = default!;
+
+        public DbSet<PeopleGetter.Models.Roupas>? Roupas { get; set; }
     }
 }
